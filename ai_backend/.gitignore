@@ -1,0 +1,33 @@
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Flask specific
+instance/ # Contains development/production specific config and SQLite databases
+*.db # SQLite database files (e.g., development.db, production.db)
+
+# Log files
+*.log
+
+# Environment variables
+.env
+.flaskenv
+
+# Uploaded files (if applicable)
+/uploads/
+
+# Operating System files
+.DS_Store
+Thumbs.db
