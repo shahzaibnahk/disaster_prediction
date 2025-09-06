@@ -45,3 +45,28 @@ export const login = catchAsyncError(async (req, res, next) => {
 
   sendToken(res, user, `Welcome Back ${user.name}`, 200);
 });
+
+export const logout = catchAsyncError(async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+});
+
+export const getMyProfile = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  return res.status(200).json({
+    success: true,
+    user,
+  });
+});
